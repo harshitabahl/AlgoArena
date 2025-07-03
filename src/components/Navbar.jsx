@@ -18,21 +18,46 @@ export default function Navbar() {
 
   const navLinks = (
     <>
-      <NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}>
+      <NavLink
+        to="/"
+        onClick={() => setIsOpen(false)}
+        className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}
+      >
         Home
       </NavLink>
-      <NavLink to="/problems" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}>
+      <NavLink
+        to="/problems"
+        onClick={() => setIsOpen(false)}
+        className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}
+      >
         Problems
       </NavLink>
-      <NavLink to="/leaderboard" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}>
+      <NavLink
+        to="/leaderboard"
+        onClick={() => setIsOpen(false)}
+        className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}
+      >
         Leaderboard
       </NavLink>
 
       {!isLoggedIn ? (
-        <NavLink to="/login" onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}>
-          <LogIn className="inline-block mr-1" size={18} />
-          Login
-        </NavLink>
+        <div className="flex flex-col md:flex-row gap-2">
+          <NavLink
+            to="/login"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}
+          >
+            <LogIn className="inline-block mr-1" size={18} />
+            Login
+          </NavLink>
+          <NavLink
+            to="/signup"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) => (isActive ? `${linkBase} ${activeLink}` : linkBase)}
+          >
+            Sign Up
+          </NavLink>
+        </div>
       ) : (
         <button onClick={handleLogout} className={`${linkBase} flex items-center`}>
           <LogOut className="mr-1" size={18} />
