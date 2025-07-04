@@ -1,5 +1,11 @@
+// src/App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -7,16 +13,16 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Problems from "./pages/Problems";
 import Leaderboard from "./pages/Leaderboard";
-import ProblemDetail from "./pages/ProblemDetail"; // If you have it
+import FinishSignUp from "./pages/FinishSignUp";
+import ProblemDetail from "./pages/ProblemDetail";
 
 // Components
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function AppContent() {
   const location = useLocation();
-
-  // ❌ Hide Navbar on these routes (auth pages)
-  const hideNavbar = ["/login", "/signup"].includes(location.pathname);
+  const hideNavbar = ["/login", "/signup", "/finishSignUp"].includes(location.pathname); // 🔧 updated here
 
   return (
     <>
@@ -25,11 +31,39 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/problems" element={<Problems />} />
-        <Route path="/problems/:id" element={<ProblemDetail />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        {/* Add 404 route if needed */}
-        <Route path="*" element={<div className="text-white text-center p-8">404: Page Not Found</div>} />
+        <Route path="/finishSignUp" element={<FinishSignUp />} />
+
+        {/* ✅ Protected Routes */}
+        <Route
+          path="/problems"
+          element={
+            <ProtectedRoute>
+              <Problems />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/problems/:id"
+          element={
+            <ProtectedRoute>
+              <ProblemDetail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
+              <Leaderboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 404 Fallback */}
+        <Route
+          path="*"
+          element={<div className="text-center p-6 text-red-500">404: Page Not Found</div>}
+        />
       </Routes>
     </>
   );
