@@ -1,6 +1,35 @@
+// src/pages/Login.jsx
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
 export default function Login() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/");
+  };
+
+  if (user) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
+        <div className="bg-gray-900 p-8 rounded-xl shadow-2xl text-center border border-gray-800">
+          <h2 className="text-2xl font-bold text-green-400 mb-4">You're already logged in!</h2>
+          <button
+            onClick={handleLogout}
+            className="bg-red-400 text-gray-900 font-bold py-2 px-4 rounded hover:bg-red-300 transition"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-800">
@@ -31,9 +60,9 @@ export default function Login() {
         </form>
         <p className="mt-6 text-sm text-center text-gray-400">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-green-400 hover:underline">
+          <Link to="/signup" className="text-green-400 hover:underline">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
