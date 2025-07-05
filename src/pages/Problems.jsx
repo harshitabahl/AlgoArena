@@ -1,5 +1,4 @@
-// src/pages/Problems.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const dummyProblems = [
@@ -11,11 +10,37 @@ const dummyProblems = [
 ];
 
 export default function Problems() {
+  const [filter, setFilter] = useState("All");
+
+  const filteredProblems =
+    filter === "All"
+      ? dummyProblems
+      : dummyProblems.filter((problem) => problem.difficulty === filter);
+
   return (
     <div className="min-h-screen bg-gray-950 text-white p-4">
       <div className="max-w-4xl mx-auto mt-10">
         <h2 className="text-3xl font-bold text-green-400 mb-6">Problems</h2>
-        <table className="w-full text-left border-collapse border border-green-400">
+
+        {/* ✅ Filter Buttons */}
+        <div className="flex gap-3 mb-6">
+          {["All", "Easy", "Medium", "Hard"].map((level) => (
+            <button
+              key={level}
+              onClick={() => setFilter(level)}
+              className={`px-4 py-2 rounded-full border ${
+                filter === level
+                  ? "bg-green-400 text-black border-green-400"
+                  : "border-green-400 text-green-400 hover:bg-green-400 hover:text-black"
+              } transition`}
+            >
+              {level}
+            </button>
+          ))}
+        </div>
+
+        {/* ✅ Table */}
+        <table className="w-full text-left border-collapse border border-green-400 rounded-xl overflow-hidden">
           <thead className="bg-gray-800">
             <tr>
               <th className="p-3 border border-green-400">Title</th>
@@ -24,7 +49,7 @@ export default function Problems() {
             </tr>
           </thead>
           <tbody>
-            {dummyProblems.map((problem) => (
+            {filteredProblems.map((problem) => (
               <tr key={problem.id} className="hover:bg-gray-800 transition">
                 <td className="p-3 border border-green-400">{problem.title}</td>
                 <td className="p-3 border border-green-400">{problem.difficulty}</td>
@@ -38,6 +63,13 @@ export default function Problems() {
                 </td>
               </tr>
             ))}
+            {filteredProblems.length === 0 && (
+              <tr>
+                <td colSpan="3" className="text-center p-4 text-gray-400">
+                  No problems found for "{filter}" difficulty.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

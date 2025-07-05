@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { sendMagicLink } from "../firebase/authFunctions";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext"; // ✅
+import { useAuth } from "../context/AuthContext"; // ✅
 
 export default function Signup() {
   const [email, setEmail] = useState("");
