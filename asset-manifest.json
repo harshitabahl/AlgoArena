@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/AlgoArena/static/js/main.56662aca.js",
+    "main.js": "/AlgoArena/static/js/main.9e11e825.js",
     "index.html": "/AlgoArena/index.html",
-    "main.56662aca.js.map": "/AlgoArena/static/js/main.56662aca.js.map"
+    "main.9e11e825.js.map": "/AlgoArena/static/js/main.9e11e825.js.map"
   },
   "entrypoints": [
-    "static/js/main.56662aca.js"
+    "static/js/main.9e11e825.js"
   ]
 }
