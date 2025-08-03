@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/AlgoArena/static/css/main.cf890fdb.css",
+    "main.css": "/AlgoArena/static/css/main.c394f2cd.css",
     "main.js": "/AlgoArena/static/js/main.826c2cee.js",
     "index.html": "/AlgoArena/index.html",
-    "main.cf890fdb.css.map": "/AlgoArena/static/css/main.cf890fdb.css.map",
+    "main.c394f2cd.css.map": "/AlgoArena/static/css/main.c394f2cd.css.map",
     "main.826c2cee.js.map": "/AlgoArena/static/js/main.826c2cee.js.map"
   },
   "entrypoints": [
-    "static/css/main.cf890fdb.css",
+    "static/css/main.c394f2cd.css",
     "static/js/main.826c2cee.js"
   ]
 }
