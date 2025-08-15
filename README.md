@@ -1,7 +1,5 @@
 AlgoArena – Gamified DSA Practice Platform
 
-Role: Developer | Duration: [Insert Months/Year]
-
 Description:
 AlgoArena is an interactive, gamified platform for practicing Data Structures & Algorithms. Users can browse and filter problems, solve them in a built-in code editor, track progress, and compete on leaderboards. The platform aims to make DSA practice engaging and game-like for students.
 
@@ -19,4 +17,4 @@ Deployed the application on GitHub Pages/Vercel, ensuring accessibility and scal
 
 Tech Stack: React, Tailwind CSS, Framer Motion, Firebase (Firestore & Auth), Node.js + Express (optional), Git/GitHub
 
-Link: [https://github.com/harshitabahl/Algoarena](replace with your repo link)
+Link: [https://github.com/harshitabahl/Algoarena]
